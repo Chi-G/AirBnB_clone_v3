@@ -124,7 +124,7 @@ class TestFileStorage(unittest.TestCase):
         state_data = {"name": "Abia"}
 
         state_instance = State(**state_data)
-        storage.new(state_instance) 
+        storage.new(state_instance)
         storage.save()
 
         retrieved_state = storage.get(State, state_instance.id)
@@ -133,7 +133,6 @@ class TestFileStorage(unittest.TestCase):
         fake_state_id = storage.get(State, 'fake_id')
 
         self.assertEqual(fake_state_id, None)
-               
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
