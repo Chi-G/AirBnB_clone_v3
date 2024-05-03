@@ -115,10 +115,10 @@ class TestDBStorage(unittest.TestCase):
         storage.new(state_instance)
         storage.save()
         retrieved_state = storage.get(State, state_instance.id)
-        self.assertEquel(state_instance, retrieved_state)
+        self.assertEqual(state_instance, retrieved_state)
         fake_state_id = storage.get(State, 'fake_id')
         self.assertEqual(fake_state_id, None)
-
+               
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         """Test that save properly saves objects to file.json"""
@@ -129,9 +129,12 @@ class TestDBStorage(unittest.TestCase):
         storage.new(state_instance)
         city_data = {"name": "Chijindu", "state_id": state_instance.id}
         city_instance = City(**city_data)
-        storage.new(city_instanc)
+        storage.new(city_instance)
         storage.save()
         state_occurrence = storage.count(State)
         self.assertEqual(state_occurrence, len(storage.all(State)))
         all_occurrence = storage.count()
         self.assertEqual(all_occurrence, len(storage.all()))
+
+if __name__ == '__main__':
+    unittest.main()
