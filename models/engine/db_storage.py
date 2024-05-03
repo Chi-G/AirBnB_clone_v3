@@ -76,31 +76,37 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
-        """method to get one object
-        Returns the object based on the class and its ID,
-        or None if not found
         """
-        if cls and id:
-                   if cls in classes.values() and isinstance(id, str):
-                              all_onjects = self.al(cls)
-                              for key, value in all_objects.items():
-                                         if key.split('.')[1] == id:
-                                                    return value
-                                         else:
-                                                    return
-                                                    return
+        Retrieves one object based on the class and its ID.
+
+        Args:
+        cls (str): The class name.
+        id (str): The object ID.
+
+        Returns:
+        obj: The object based on the class and its ID, or None if not found
+        """
+        if cls in classes.values() and isinstance(id, str):
+                   all_objects = self.all(cls)
+                   for key, value in all_objects.items():
+                              if key.split('.')[1] == id:
+                                         return value
+        return None
 
     def count(self, cls=None):
-        """method to count the number of objects in storage
-        Returns the number of objects in storage matching the given class.
-        If no class is passed, returns the count of all objects in storage
+        """Counts the number of objects in storage.
+
+        Args:
+        cls (str, optional): The class name.
+
+        Returns:
+        int: The number of objects in storage matching the given class.
+             If no class is passed, returns the count of all objects in storage.
         """
        
                if not cls:
-                          inst_of_all = self.all()
-                          return len(inst_of_all_cls)
-                                 if cls in classes.value():
-                                            all_inst_of_prov_cls  = self.all(cls)
-                                            return lem(all_int_of_prev_cls)
-                                            if cls not in claases.value():
-                                                       return
+                          return len(self.all
+               elif cls in classes.values():
+                          return len(self.all(cls))
+               else:
+                          return 0
